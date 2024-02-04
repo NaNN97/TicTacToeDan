@@ -2,6 +2,7 @@ var player = "X";
 var isGameActive = false;
 const gameStatus = document.querySelector('.game');
 const tilesArr = document.querySelectorAll('.tile');
+const currentPlayer = document.querySelector('.currentPlayer');
 
 tilesArr.forEach(function(tile) {
   tile.addEventListener('click', handleTileClick);
@@ -87,6 +88,7 @@ function handleTileClick (event) {
       console.log(player + ' wins!');
     } else {
       console.log(player);
+      currentPlayer.innerHTML = `Current player: ${player}`;
       player = player === 'X' ? 'O' : 'X';
 
     }
