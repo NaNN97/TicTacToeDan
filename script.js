@@ -64,8 +64,7 @@ function resetGame() {
   tilesArr.forEach(tile => {
     tile.textContent = '';
   });
-
-  player = 'X';
+  
   currentPlayer.innerHTML = `Current player: ${player}`;
   board = [
     ['', '', ''],
@@ -107,6 +106,7 @@ function handleTileClick (event) {
         document.getElementById('scoreO').textContent =scoreO;
       }
       document.getElementById('winner').textContent = player + ' wins!';
+      currentPlayer.innerHTML = `Current player: ${player}`;
       endGame();
     } else {
       console.log(player);
