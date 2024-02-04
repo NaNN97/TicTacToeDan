@@ -1,5 +1,7 @@
-var player = "X";
-var isGameActive = false;
+let player = "X";
+let gameActive = true;
+let scoreX = 0;
+let scoreO = 0;
 const gameStatus = document.querySelector('.game');
 const tilesArr = document.querySelectorAll('.tile');
 const currentPlayer = document.querySelector('.currentPlayer');
@@ -63,17 +65,29 @@ function resetGame() {
     tile.textContent = '';
   });
 
-  currentPlayer = 'X';
+  player = 'X';
+  currentPlayer.innerHTML = `Current player: ${player}`;
   board = [
     ['', '', ''],
     ['', '', ''],
     ['', '', '']
   ];
+  
+  document.getElementById('winner').textContent = '';
+  gameActive = true;
+
+  tilesArr.forEach(tile => {
+    tile.addEventListener('click', handleTileClick);
+  })
 }
 
 
 
 function handleTileClick (event) {
+  if (!gameActive) {
+    console.log('game is over');
+    return;
+  }
   const clickedTile = event.target;
   const index = clickedTile.dataset.index;
 
@@ -85,12 +99,27 @@ function handleTileClick (event) {
     board[row][col] = player;
 
     if (checkWin() || checkDraw()) {
-      console.log(player + ' wins!');
+      if (player === 'X') {
+        scoreX++;
+        document.getElementById('scoreX').textContent = scoreX;
+      } else {
+        scoreO++;
+        document.getElementById('scoreO').textContent =scoreO;
+      }
+      document.getElementById('winner').textContent = player + ' wins!';
+      endGame();
     } else {
       console.log(player);
       currentPlayer.innerHTML = `Current player: ${player}`;
       player = player === 'X' ? 'O' : 'X';
-
     }
   }
+}
+
+function endGame() {
+  gameActive = false;
+
+  tilesArr.forEach(tile => {
+    tile.removeEventListener('click', handleTileClick);
+  })
 }

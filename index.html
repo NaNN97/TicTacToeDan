@@ -5,8 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>TicTacToeDan</title>
+  <body>
 </head>
-<body>
+  <div>
+    <p>Player X Score: <span id="scoreX">0</span></p>
+    <br />
+    <div class="currentPlayer">Current player: ''</div>
+    <span id="winner"></span>
+    <br />
+    <p>Player O Score: <span id="scoreO">0</span></p>
+  </div>
+
   <div class="game" id="game">
     <div class="tile" data-index="0"></div>
     <div class="tile" data-index="1"></div>
@@ -18,9 +27,13 @@
     <div class="tile" data-index="7"></div>
     <div class="tile" data-index="8"></div>
   </div>
+    <button onclick="resetGame()">Play again</button>
 
-  <button onclick="resetGame()">Reset</button>
-  <div class="currentPlayer">Current player: ''</div>
+    
+  </div>
+
+
+
 
   <script src="script.js">
 
