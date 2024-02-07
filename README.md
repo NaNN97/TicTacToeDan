@@ -3,6 +3,10 @@
 ## Game rules ## 
   ### - Players take turn putting their marks in empty squares ###
 
+
+https://github.com/NaNN97/TicTacToeDan/assets/17276475/6efcb0ee-3e64-4692-900c-5e17675c1d71
+
+
   ### - Winning conditions ###
 ``` 
 [
